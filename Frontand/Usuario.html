@@ -64,30 +64,6 @@
                                 <span>Inicio</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center gap-2">
-                                <i class="bi bi-calendar4 text-dark"></i>
-                                <span>Agenda</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center gap-2">
-                                <i class="bi bi-person text-dark"></i>
-                                <span>Pacientes</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center gap-2">
-                                <i class="bi bi-bar-chart text-dark"></i>
-                                <span>Relatórios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center gap-2">
-                                <i class="bi bi-gear text-dark"></i>
-                                <span>Configurações</span>
-                            </a>
-                        </li>
                     </ul>
 
                     <div class="d-flex align-items-center pt-3 border-top">
@@ -120,37 +96,11 @@
                         <span>Inicio</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-center gap-2">
-                        <i class="bi bi-calendar4 text-dark"></i>
-                        <span>Agenda</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-center gap-2">
-                        <i class="bi bi-person text-dark"></i>
-                        <span>Pacientes</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-center gap-2">
-                        <i class="bi bi-bar-chart text-dark"></i>
-                        <span>Relatórios</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-center gap-2">
-                        <i class="bi bi-gear text-dark"></i>
-                        <span>Configurações</span>
-                    </a>
-                </li>
             </ul>
 
             <div class="mt-auto d-flex align-items-center pt-3 border-top">
-                <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Foto">
                 <div>
-                    <div class="fw-bold small">Dr. Lucas Silva</div>
-                    <div class="text-muted small">CRM/SP 123456</div>
+                    <div class="fw-bold small"> Camila</div>
                 </div>
                 <a href="login.html" class="btn btn-link text-dark ms-auto p-0 border-0" title="Sair do sistema">
                     <i class="bi bi-box-arrow-right fs-5"></i>
@@ -164,9 +114,9 @@
 
                 <!-- CABEÇALHO -->
                 <header class="d-flex flex-column py-2 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
-                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Início</h6>
+                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Pacientes</h6>
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0 fw-bold">Olá, Dr. Lucas!</h4>
+                        <h4 class="mb-0 fw-bold">Olá, Camila!</h4>
                         <div>
                             <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
                                 data-bs-target="#modalNovaConsulta">
@@ -182,8 +132,8 @@
                                             <div>
                                                 <h4 class="modal-title fw-bold text-dark" id="modalNovaConsultaLabel">
                                                     Agendar Consulta</h4>
-                                                <p class="text-muted small mb-0">Preencha as informações para agendar a
-                                                    nova sessão do paciente</p>
+                                                <p class="text-muted small mb-0">Preencha as informações para agendar
+                                                </p>
                                             </div>
                                             <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -193,12 +143,7 @@
                                             <form>
                                                 <div class="row g-3">
                                                     <div class="col-12">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Buscar
-                                                            Paciente</label>
-                                                        <input type="text" class="form-control rounded-3"
-                                                            placeholder="Digite o nome do paciente..."
-                                                            value="Mariana Costa Neves">
+
                                                     </div>
 
                                                     <div class="col-md-6">
@@ -289,67 +234,7 @@
                         </div>
                     </div>
                 </header>
-
                 <!-- GRADE DOS CARDS (Responsiva: Celular 1, Tablet 2, Desktop 4) -->
-                <div class="row g-4 mb-4 justify-content-center">
-
-                    <!-- Card 1: Consultas Hoje -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="p-3 border border-1 rounded-4 bg-white shadow-sm h-100">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="p-2 rounded-3 me-3 d-flex align-items-center justify-content-center"
-                                    style="background-color: rgba(13, 110, 253, 0.1); width: 45px; height: 45px;">
-                                    <i class="bi bi-calendar-event text-primary fs-4"></i>
-                                </div>
-                                <span class="text-muted fs-6">Consultas Hoje</span>
-                            </div>
-                            <h3 class="fw-bold mb-0 text-dark">12</h3>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Pacientes Ativos -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="p-3 border border-1 rounded-4 bg-white shadow-sm h-100">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="p-2 rounded-3 me-3 d-flex align-items-center justify-content-center"
-                                    style="background-color: rgba(25, 135, 84, 0.1); width: 45px; height: 45px;">
-                                    <i class="bi bi-people text-success fs-4"></i>
-                                </div>
-                                <span class="text-muted fs-6">Pacientes Ativos</span>
-                            </div>
-                            <h3 class="fw-bold mb-0 text-dark">248</h3>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Cancelamentos -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="p-3 border border-1 rounded-4 bg-white shadow-sm h-100">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="p-2 rounded-3 me-3 d-flex align-items-center justify-content-center"
-                                    style="background-color: rgba(220, 53, 69, 0.1); width: 45px; height: 45px;">
-                                    <i class="bi bi-x-circle text-danger fs-4"></i>
-                                </div>
-                                <span class="text-muted fs-6">Cancelamentos</span>
-                            </div>
-                            <h3 class="fw-bold mb-0 text-dark">3</h3>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Próxima Consulta -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="p-3 border border-1 rounded-4 bg-white shadow-sm h-100">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="p-2 rounded-3 me-3 d-flex align-items-center justify-content-center"
-                                    style="background-color: rgba(255, 225, 134, 0.584); width: 45px; height: 45px;">
-                                    <i class="bi bi-clock text-warning fs-4"></i>
-                                </div>
-                                <span class="text-muted fs-6">Próxima Consulta</span>
-                            </div>
-                            <h3 class="fw-bold mb-0 text-dark">14:30</h3>
-                        </div>
-                    </div>
-
-                </div>
 
                 <!-- SEÇÃO DA TABELA (Fora da row dos cards, garantindo largura total) -->
                 <div class="row">
@@ -360,9 +245,9 @@
                             <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                                 <div>
                                     <h5 class="fw-bold mb-1">Agenda de Hoje</h5>
-                                    <p class="text-muted small mb-0">Lista de pacientes programados para este turno</p>
+                                    <p class="text-muted small mb-0">Lista de Medicos programados para este turno</p>
                                 </div>
-                                
+
                             </div>
 
                             <!-- Tabela Responsiva -->
@@ -371,10 +256,9 @@
                                     <thead>
                                         <tr class="text-muted text-uppercase" style="font-size: 0.75rem;">
                                             <th scope="col" class="py-3">Horário</th>
-                                            <th scope="col" class="py-3">Paciente</th>
+                                            <th scope="col" class="py-3">Medicos</th>
                                             <th scope="col" class="py-3">Tipo</th>
                                             <th scope="col" class="py-3">Status</th>
-                                            <th scope="col" class="py-3 text-end">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -382,91 +266,65 @@
                                         <tr>
                                             <td class="fw-bold text-dark">09:00</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Mariana Costa Neves</div>
+                                                <div class="fw-semibold text-dark">Dr. Lucas Silva</div>
                                             </td>
                                             <td class="text-muted">Retorno</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Confirmado</span>
                                             </td>
-                                            <td class="text-end">
-                                                <button type="button"
-                                                    class="btn btn-sm px-3 rounded-3 text-primary border-0 fw-semibold"
-                                                    style="background-color: rgba(13, 110, 253, 0.1);">Atender</button>
-                                            </td>
                                         </tr>
                                         <!-- Linha 2 -->
                                         <tr>
                                             <td class="fw-bold text-dark">10:30</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Carlos Eduardo Santos</div>
+                                                <div class="fw-semibold text-dark">Dra. Ana Souza</div>
                                             </td>
                                             <td class="text-muted">Consulta</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Confirmado</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <button type="button"
-                                                    class="btn btn-sm px-3 rounded-3 text-primary border-0 fw-semibold"
-                                                    style="background-color: rgba(13, 110, 253, 0.1);">Atender</button>
                                             </td>
                                         </tr>
                                         <!-- Linha 3 -->
                                         <tr>
                                             <td class="fw-bold text-dark">11:15</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Juliana Mendes Silva</div>
+                                                <div class="fw-semibold text-dark">Dr. Roberto Mendes</div>
                                             </td>
                                             <td class="text-muted">Exame</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
                                                     style="background-color: rgba(255, 225, 134, 0.584); color: #b8860b; font-size: 0.85rem;">Pendente</span>
                                             </td>
-                                            <td class="text-end">
-                                                <button type="button"
-                                                    class="btn btn-sm px-3 rounded-3 text-primary border-0 fw-semibold"
-                                                    style="background-color: rgba(13, 110, 253, 0.1);">Atender</button>
-                                            </td>
                                         </tr>
                                         <!-- Linha 4 -->
                                         <tr>
                                             <td class="fw-bold text-dark">14:00</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Felipe Rodrigues Almeida</div>
+                                                <div class="fw-semibold text-dark">Dra. Ana Souza</div>
                                             </td>
                                             <td class="text-muted">Consulta</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Confirmado</span>
                                             </td>
-                                            <td class="text-end">
-                                                <button type="button"
-                                                    class="btn btn-sm px-3 rounded-3 text-primary border-0 fw-semibold"
-                                                    style="background-color: rgba(13, 110, 253, 0.1);">Atender</button>
-                                            </td>
                                         </tr>
                                         <!-- Linha 5 -->
                                         <tr>
                                             <td class="fw-bold text-dark">15:00</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Beatriz Oliveira</div>
+                                                <div class="fw-semibold text-dark">Dra. Ana Souza</div>
                                             </td>
                                             <td class="text-muted">Procedimento</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
                                                     style="background-color: rgba(220, 53, 69, 0.1); color: #dc3545; font-size: 0.85rem;">Cancelado</span>
                                             </td>
-                                            <td class="text-end">
-                                                <button type="button"
-                                                    class="btn btn-sm px-3 rounded-3 text-primary border-0 fw-semibold"
-                                                    style="background-color: rgba(13, 110, 253, 0.1);">Atender</button>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
