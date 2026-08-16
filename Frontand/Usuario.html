@@ -44,7 +44,7 @@
 
     <div class="d-flex flex-column flex-lg-row w-100 min-vh-100">
 
-        <!-- 1. NAVBAR MOBILE (Aparece apenas em celulares e tablets, escondida em desktop com d-lg-none) -->
+        <!-- 1. NAVBAR MOBILE -->
         <nav class="navbar navbar-light bg-white border-bottom d-lg-none px-3 w-100">
             <div class="container-fluid p-0">
                 <a class="navbar-brand d-flex align-items-center text-primary m-0" href="#">
@@ -81,7 +81,7 @@
             </div>
         </nav>
 
-        <!-- 2. SIDEBAR ORIGINAL (Aparece apenas em desktops, escondida no celular usando d-none d-lg-flex) -->
+        <!-- 2. SIDEBAR ORIGINAL -->
         <aside class="sidebar bg-white border-end p-3 d-none d-lg-flex flex-column">
 
             <div class="d-flex align-items-center mb-4 text-primary">
@@ -114,65 +114,138 @@
 
                 <!-- CABEÇALHO -->
                 <header class="d-flex flex-column py-2 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
-                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Pacientes</h6>
-                    <!-- FILTROS DE BUSCA -->
-                    <div class="row g-4 mb-4">
-                        <div class="col-12">
-                            <div class="p-3 border border-1 rounded-4 bg-white shadow-sm h-100">
-                                <div class="row g-3 align-items-end">
+                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Início</h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0 fw-bold">Olá, Juliana!</h4>
+                        <div>
+                            <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                                data-bs-target="#modalNovaConsulta">
+                                <i class="bi bi-plus-lg"></i> Nova Consulta
+                            </button>
+                            <!-- MODAL DE AGENDAR CONSULTA -->
+                            <div class="modal fade" id="modalNovaConsulta" tabindex="-1"
+                                aria-labelledby="modalNovaConsultaLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content border-5 rounded-4 shadow">
 
-                                    <!-- Campo: Buscar por nome ou CPF -->
-                                    <div class="col-md-5">
-                                        <label class="form-label text-uppercase small fw-bold text-secondary">Buscar por
-                                            nome ou CPF</label>
-                                        <input type="text" id="filtroBusca" class="form-control rounded-3"
-                                            placeholder="Digite para iniciar a busca...">
+                                        <div class="modal-header border-bottom px-4 pt-4 pb-3">
+                                            <div>
+                                                <h4 class="modal-title fw-bold text-dark" id="modalNovaConsultaLabel">
+                                                    Agendar Consulta</h4>
+                                                <p class="text-muted small mb-0">Preencha as informações para agendar a
+                                                    nova sessão do paciente</p>
+                                            </div>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body p-4">
+                                            <form>
+                                                <div class="row g-3">
+                                                    <div class="col-12">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Buscar
+                                                            Paciente</label>
+                                                        <input type="text" class="form-control rounded-3"
+                                                            placeholder="Digite o nome do paciente..."
+                                                            value="Mariana Costa Neves">
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Médico
+                                                            Responsável</label>
+                                                        <select class="form-select rounded-3">
+                                                            <option selected>Dr. Lucas Silva</option>
+                                                            <option>Dra. Ana Souza</option>
+                                                            <option>Dr. Roberto Mendes</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Convênio</label>
+                                                        <select class="form-select rounded-3">
+                                                            <option selected>Unimed Integral Nacional</option>
+                                                            <option>Bradesco Saúde</option>
+                                                            <option>Particular</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Data</label>
+                                                        <input type="date" class="form-control rounded-3"
+                                                            value="2026-05-15">
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Horário
+                                                            Disponível</label>
+                                                        <select class="form-select rounded-3">
+                                                            <option value="">Selecione um horário...</option>
+                                                            <option value="09:00">09:00 - Manhã</option>
+                                                            <option value="10:30">10:30 - Manhã</option>
+                                                            <option value="14:30" selected>14:30 - Tarde</option>
+                                                            <option value="16:00">16:00 - Tarde</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Tipo
+                                                            de Agendamento</label>
+                                                        <select class="form-select rounded-3">
+                                                            <option selected>Consulta Geral</option>
+                                                            <option>Retorno</option>
+                                                            <option>Exame</option>
+                                                            <option>Procedimento</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Status
+                                                            Inicial</label>
+                                                        <select class="form-select rounded-3">
+                                                            <option selected>Confirmado</option>
+                                                            <option>Pendente</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Observações
+                                                            e Alergias</label>
+                                                        <textarea class="form-control rounded-3" rows="3"
+                                                            placeholder="Adicione observações importantes para o dia do atendimento..."></textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer border-top px-4 py-3">
+                                            <button type="button" class="btn btn-light border rounded-3 px-3"
+                                                data-bs-dismiss="modal">Cancelar Agendamento</button>
+                                            <button type="button" class="btn btn-primary rounded-3 px-4 text-whithe">
+                                                <i class="bi bi-check-lg me-1"></i> Confirmar e Salvar
+                                            </button>
+                                        </div>
+
                                     </div>
-
-                                    <!-- Campo: Filtrar por status -->
-                                    <div class="col-md-3">
-                                        <label class="form-label text-uppercase small fw-bold text-secondary">Filtrar
-                                            por Status</label>
-                                        <select id="filtroStatus" class="form-select rounded-3">
-                                            <option value="todos" selected>Todos os Status</option>
-                                            <option value="Ativo">Ativo</option>
-                                            <option value="Inativo">Inativo</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Campo: Convênio -->
-                                    <div class="col-md-2">
-                                        <label
-                                            class="form-label text-uppercase small fw-bold text-secondary">Convênio</label>
-                                        <select id="filtroConvenio" class="form-select rounded-3">
-                                            <option value="todos" selected>Todos</option>
-                                            <option value="Unimed">Unimed</option>
-                                            <option value="Bradesco">Bradesco Saúde</option>
-                                            <option value="Particular">Particular</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Botão Filtrar -->
-                                    <div class="col-md-2 d-grid">
-                                        <button type="button" id="btnFiltrar"
-                                            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center gap-2">
-                                            <i class="bi bi-search"></i> Filtrar
-                                        </button>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </header>
-                <!-- GRADE DOS CARDS (Responsiva: Celular 1, Tablet 2, Desktop 4) -->
 
-                <!-- SEÇÃO DA TABELA (Fora da row dos cards, garantindo largura total) -->
+                <!-- SEÇÃO DA TABELA -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card border-1 rounded-4 shadow-sm bg-white p-4">
 
-                            <!-- Cabeçalho da Tabela -->
+                            <!-- Cabeçalho da Tabela com o Botão de Nova Consulta Restaurado -->
                             <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                                 <div>
                                     <h5 class="fw-bold mb-1">Agenda de Hoje</h5>
