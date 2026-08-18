@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAgenda - Área do Paciente</title>
+    
+    <!-- Bootstrap CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <title>MedAgenda</title>
+
     <style>
         body {
             min-height: 100vh;
@@ -61,16 +66,18 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link active d-flex align-items-center gap-2">
                                 <i class="bi bi-grid"></i>
-                                <span>Inicio</span>
+                                <span>Início</span>
                             </a>
                         </li>
                     </ul>
 
                     <div class="d-flex align-items-center pt-3 border-top">
-                        <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Foto">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2 fw-bold" style="width: 40px; height: 40px;">
+                            J
+                        </div>
                         <div>
-                            <div class="fw-bold small">Dr. Lucas Silva</div>
-                            <div class="text-muted small">CRM/SP 123456</div>
+                            <div class="fw-bold small">Juliana</div>
+                            <div class="text-muted small">Paciente</div>
                         </div>
                         <a href="login.html" class="btn btn-link text-dark ms-auto p-0 border-0"
                             title="Sair do sistema">
@@ -81,9 +88,8 @@
             </div>
         </nav>
 
-        <!-- 2. SIDEBAR ORIGINAL -->
+        <!-- 2. SIDEBAR DESKTOP -->
         <aside class="sidebar bg-white border-end p-3 d-none d-lg-flex flex-column">
-
             <div class="d-flex align-items-center mb-4 text-primary">
                 <i class="bi bi-heart-pulse fs-3 me-2"></i>
                 <h4 class="mb-0 text-dark">MedAgenda</h4>
@@ -93,14 +99,18 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link active d-flex align-items-center gap-2">
                         <i class="bi bi-grid"></i>
-                        <span>Inicio</span>
+                        <span>Início</span>
                     </a>
                 </li>
             </ul>
 
             <div class="mt-auto d-flex align-items-center pt-3 border-top">
+                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2 fw-bold" style="width: 40px; height: 40px;">
+                    J
+                </div>
                 <div>
                     <div class="fw-bold small">Juliana</div>
+                    <div class="text-muted small">Paciente</div>
                 </div>
                 <a href="login.html" class="btn btn-link text-dark ms-auto p-0 border-0" title="Sair do sistema">
                     <i class="bi bi-box-arrow-right fs-5"></i>
@@ -109,148 +119,127 @@
         </aside>
 
         <!-- MAIN (Conteúdo da Direita) -->
-        <main class="flex-grow-1 p-3 bg-light overflow-auto">
+        <main class="flex-grow-1 p-3 p-md-4 bg-light overflow-auto">
             <div class="container-fluid px-0">
 
                 <!-- CABEÇALHO -->
-                <header class="d-flex flex-column py-2 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
-                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Início</h6>
-                    <div class="d-flex justify-content-between align-items-center">
+                <header class="d-flex flex-column py-3 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
+                    <h6 class="text-muted mb-1">MedAgenda / Início</h6>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="mb-0 fw-bold">Olá, Juliana!</h4>
-                        <div>
-                            <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
-                                data-bs-target="#modalNovaConsulta">
-                                <i class="bi bi-plus-lg"></i> Nova Consulta
-                            </button>
-                            <!-- MODAL DE AGENDAR CONSULTA -->
-                            <div class="modal fade" id="modalNovaConsulta" tabindex="-1"
-                                aria-labelledby="modalNovaConsultaLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                    <div class="modal-content border-5 rounded-4 shadow">
-
-                                        <div class="modal-header border-bottom px-4 pt-4 pb-3">
-                                            <div>
-                                                <h4 class="modal-title fw-bold text-dark" id="modalNovaConsultaLabel">
-                                                    Agendar Consulta</h4>
-                                                <p class="text-muted small mb-0">Preencha as informações para
-                                                    agendamento </p>
-                                            </div>
-                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-
-                                        <div class="modal-body p-4">
-                                            <form>
-                                                <div class="row g-3">
-                                                    <div class="col-12">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Seu
-                                                            Nome</label>
-                                                        <input type="text" class="form-control rounded-3"
-                                                            placeholder="Nome do Paciente" value="">
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Médico
-                                                            Responsável</label>
-                                                        <select class="form-select rounded-3">
-                                                            <option selected>Dr. Lucas Silva</option>
-                                                            <option>Dra. Ana Souza</option>
-                                                            <option>Dr. Roberto Mendes</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Convênio</label>
-                                                        <select class="form-select rounded-3">
-                                                            <option selected>Unimed Integral Nacional</option>
-                                                            <option>Bradesco Saúde</option>
-                                                            <option>Particular</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Data</label>
-                                                        <input type="date" class="form-control rounded-3"
-                                                            value="2026-05-15">
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Horário
-                                                            Disponível</label>
-                                                        <select class="form-select rounded-3">
-                                                            <option value="">Selecione um horário...</option>
-                                                            <option value="09:00">09:00 - Manhã</option>
-                                                            <option value="10:30">10:30 - Manhã</option>
-                                                            <option value="14:30" selected>14:30 - Tarde</option>
-                                                            <option value="16:00">16:00 - Tarde</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Tipo
-                                                            de Agendamento</label>
-                                                        <select class="form-select rounded-3">
-                                                            <option selected>Consulta Geral</option>
-                                                            <option>Retorno</option>
-                                                            <option>Exame</option>
-                                                            <option>Procedimento</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Status
-                                                            Inicial</label>
-                                                        <select class="form-select rounded-3">
-                                                            <option selected>Confirmado</option>
-                                                            <option>Pendente</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">Observações
-                                                            e Alergias</label>
-                                                        <textarea class="form-control rounded-3" rows="3"
-                                                            placeholder="Adicione observações importantes para o dia do atendimento..."></textarea>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <div class="modal-footer border-top px-4 py-3">
-                                            <button type="button" class="btn btn-light border rounded-3 px-3"
-                                                data-bs-dismiss="modal">Cancelar Agendamento</button>
-                                            <button type="button" class="btn btn-primary rounded-3 px-4 text-whithe">
-                                                <i class="bi bi-check-lg me-1"></i> Confirmar e Salvar
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                            data-bs-target="#modalNovaConsulta">
+                            <i class="bi bi-plus-lg me-1"></i> Nova Consulta
+                        </button>
                     </div>
                 </header>
+
+                <!-- MODAL DE AGENDAR CONSULTA -->
+                <div class="modal fade" id="modalNovaConsulta" tabindex="-1"
+                    aria-labelledby="modalNovaConsultaLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content border-0 rounded-4 shadow">
+
+                            <div class="modal-header border-bottom px-4 pt-4 pb-3">
+                                <div>
+                                    <h4 class="modal-title fw-bold text-dark" id="modalNovaConsultaLabel">
+                                        Agendar Consulta
+                                    </h4>
+                                    <p class="text-muted small mb-0">Preencha as informações para agendamento</p>
+                                </div>
+                                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body p-4">
+                                <form id="formAgendamento">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Seu Nome</label>
+                                            <input type="text" class="form-control rounded-3" value="Juliana Silva" readonly>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Médico Responsável</label>
+                                            <select class="form-select rounded-3">
+                                                <option selected disabled>Selecione um profissional...</option>
+                                                <option>Dr. Lucas Silva (Cardiologia)</option>
+                                                <option>Dra. Ana Souza (Dermatologia)</option>
+                                                <option>Dr. Roberto Mendes (Ortopedia)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Convênio</label>
+                                            <select class="form-select rounded-3">
+                                                <option selected>Unimed Integral Nacional</option>
+                                                <option>Bradesco Saúde</option>
+                                                <option>Particular</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Data</label>
+                                            <input type="date" class="form-control rounded-3" value="2026-05-15">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Horário Disponível</label>
+                                            <select class="form-select rounded-3">
+                                                <option value="" disabled selected>Selecione um horário...</option>
+                                                <option value="09:00">09:00 - Manhã</option>
+                                                <option value="10:30">10:30 - Manhã</option>
+                                                <option value="14:30">14:30 - Tarde</option>
+                                                <option value="16:00">16:00 - Tarde</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Tipo de Agendamento</label>
+                                            <select class="form-select rounded-3">
+                                                <option selected>Consulta Geral</option>
+                                                <option>Retorno</option>
+                                                <option>Exame</option>
+                                                <option>Procedimento</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Status Inicial</label>
+                                            <input type="text" class="form-control rounded-3" value="Pendente de Confirmação" disabled>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label text-uppercase small text-muted fw-bold">Observações e Alergias</label>
+                                            <textarea class="form-control rounded-3" rows="3"
+                                                placeholder="Adicione observações importantes para o dia do atendimento..."></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer border-top px-4 py-3">
+                                <button type="button" class="btn btn-light border rounded-3 px-3"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" form="formAgendamento" class="btn btn-primary rounded-3 px-4 text-white">
+                                    <i class="bi bi-check-lg me-1"></i> Confirmar e Salvar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 <!-- SEÇÃO DA TABELA -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card border-1 rounded-4 shadow-sm bg-white p-4">
 
-                            <!-- Cabeçalho da Tabela com o Botão de Nova Consulta Restaurado -->
                             <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                                 <div>
-                                    <h5 class="fw-bold mb-1">Agenda de Hoje</h5>
-                                    <p class="text-muted small mb-0">Lista de Medicos programados para este turno</p>
+                                    <h5 class="fw-bold mb-1">Minha Agenda</h5>
+                                    <p class="text-muted small mb-0">Listagem de todas as suas consultas e exames</p>
                                 </div>
-
                             </div>
 
                             <!-- Tabela Responsiva -->
@@ -259,7 +248,7 @@
                                     <thead>
                                         <tr class="text-muted text-uppercase" style="font-size: 0.75rem;">
                                             <th scope="col" class="py-3">Horário</th>
-                                            <th scope="col" class="py-3">Medicos</th>
+                                            <th scope="col" class="py-3">Médico</th>
                                             <th scope="col" class="py-3">Tipo</th>
                                             <th scope="col" class="py-3">Status</th>
                                         </tr>
@@ -270,6 +259,7 @@
                                             <td class="fw-bold text-dark">09:00</td>
                                             <td>
                                                 <div class="fw-semibold text-dark">Dr. Lucas Silva</div>
+                                                <div class="text-muted small">Cardiologia</div>
                                             </td>
                                             <td class="text-muted">Retorno</td>
                                             <td>
@@ -282,6 +272,7 @@
                                             <td class="fw-bold text-dark">10:30</td>
                                             <td>
                                                 <div class="fw-semibold text-dark">Dra. Ana Souza</div>
+                                                <div class="text-muted small">Dermatologia</div>
                                             </td>
                                             <td class="text-muted">Consulta</td>
                                             <td>
@@ -294,30 +285,20 @@
                                             <td class="fw-bold text-dark">11:15</td>
                                             <td>
                                                 <div class="fw-semibold text-dark">Dr. Roberto Mendes</div>
+                                                <div class="text-muted small">Ortopedia</div>
                                             </td>
                                             <td class="text-muted">Exame</td>
                                             <td>
                                                 <span class="px-3 py-1 rounded-2 fw-semibold"
-                                                    style="background-color: rgba(255, 225, 134, 0.584); color: #b8860b; font-size: 0.85rem;">Pendente</span>
+                                                    style="background-color: rgba(255, 193, 7, 0.2); color: #856404; font-size: 0.85rem;">Pendente</span>
                                             </td>
                                         </tr>
                                         <!-- Linha 4 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">14:00</td>
-                                            <td>
-                                                <div class="fw-semibold text-dark">Dra. Ana Souza</div>
-                                            </td>
-                                            <td class="text-muted">Consulta</td>
-                                            <td>
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
-                                                    style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Confirmado</span>
-                                            </td>
-                                        </tr>
-                                        <!-- Linha 5 -->
-                                        <tr>
                                             <td class="fw-bold text-dark">15:00</td>
                                             <td>
                                                 <div class="fw-semibold text-dark">Dra. Ana Souza</div>
+                                                <div class="text-muted small">Dermatologia</div>
                                             </td>
                                             <td class="text-muted">Procedimento</td>
                                             <td>
@@ -328,6 +309,7 @@
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>

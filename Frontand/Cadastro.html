@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Cadastro</title>
+    <title>Cadastro - MedAgenda</title>
 </head>
 
 <body>
@@ -16,58 +16,56 @@
         <div class="w-100 p-4 bg-white rounded shadow-sm" style="max-width: 420px;">
 
             <div class="text-center mb-4">
-                <div class="">
-                    <i class="bi bi-heart-pulse fs-1 text-primary "></i>
+                <div>
+                    <i class="bi bi-heart-pulse fs-1 text-primary"></i>
                 </div>
                 <h1 class="h3 mt-3">MedAgenda</h1>
-                <p class="text-muted">Sistema de Agendamento e Gestão de Consultorio</p>
+                <p class="text-muted">Sistema de Agendamento e Gestão de Consultório</p>
             </div>
 
-            <form>
+            <!-- Form configurado para submeter via POST -->
+            <form action="{% url 'agenda:signup' %}" method="POST">
+                {% csrf_token %}
 
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="contato@medagenda.com.br">
-                </div>
-
-                <div class="mb-3">
-                    <label for="telefone" class="form-label">Telefone</label>
-                    <input type="tel" id="telefone" class="form-control" placeholder="(00) 00000-0000">
-                </div>
-
-                <div class="mb-3 needs-validation">
-                    <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" id="cpf" class="form-control" placeholder="000.000.000-00" maxlength="14">
+                    <label for="id_email" class="form-label">E-mail</label>
+                    <input type="email" name="email" class="form-control" id="id_email"
+                        placeholder="contato@medagenda.com.br" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Seu nome de usuário">
+                    <label for="id_telefone" class="form-label">Telefone</label>
+                    <input type="tel" name="telefone" id="id_telefone" class="form-control" placeholder="(00) 00000-0000">
                 </div>
 
-                <div class="mb-3 needs-validation">
-                    <label for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="*****************">
+                <div class="mb-3">
+                    <label for="id_cpf" class="form-label">CPF</label>
+                    <input type="text" name="cpf" id="id_cpf" class="form-control" placeholder="000.000.000-00" maxlength="14">
                 </div>
 
-                <div class="mb-3 needs-validation">
-                    <label for="exampleInputPassword1" class="form-label">Confirme a Senha </label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="*****************">
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Usuário</label>
+                    <input type="text" name="username" class="form-control" id="id_username"
+                        placeholder="Seu nome de usuário" required>
                 </div>
 
-                <div class="mb-3 form-check d-flex justify-content-between align-items-center ps-0">
-                    <div>
-                        <input type="checkbox" class="form-check-input ms-0 me-2" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Lembrar-me</label>
-                    </div>
+                <div class="mb-3">
+                    <label for="id_password1" class="form-label">Senha</label>
+                    <input type="password" name="password1" class="form-control" id="id_password1"
+                        placeholder="*****************" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100"> <a href="login.html" class="btn-primary">
-                        Entrar</button></a>
+                <div class="mb-3">
+                    <label for="id_password2" class="form-label">Confirme a Senha</label>
+                    <input type="password" name="password2" class="form-control" id="id_password2"
+                        placeholder="*****************" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-3">Cadastrar</button>
+
+                <div class="text-center">
+                    <a href="{% url 'login' %}" class="text-decoration-none">Já tem uma conta? Faça login</a>
+                </div>
             </form>
 
         </div>
