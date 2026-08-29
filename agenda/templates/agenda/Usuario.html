@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>MedAgenda - Usuário</title>
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 290px;
+            min-height: 100vh;
+            flex-shrink: 0;
+        }
+
+        .nav-link.active {
+            background-color: #eaf2ff;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: #333;
+        }
+
+        .sidebar .bi {
+            font-size: 1.25rem;
+            width: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex flex-column flex-lg-row w-100 min-vh-100">
+
+        <!-- 1. NAVBAR MOBILE -->
+        <nav class="navbar navbar-light bg-white border-bottom d-lg-none px-3 w-100">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand d-flex align-items-center text-primary m-0" href="#">
+                    <i class="bi bi-heart-pulse fs-3 me-2"></i>
+                    <span class="fs-5 fw-bold text-dark">MedAgenda</span>
+                </a>
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuMobile" aria-controls="menuMobile" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mt-3" id="menuMobile">
+                    <ul class="nav nav-pills flex-column gap-1 mb-3">
+                        <li class="nav-item">
+                            <a href="{% url 'usuario' %}" class="nav-link active d-flex align-items-center gap-2">
+                                <i class="bi bi-grid"></i>
+                                <span>Início</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center pt-3 border-top">
+                        <div>
+                            <div class="fw-bold small">{{ request.user.get_full_name|default:request.user.username }}
+                            </div>
+                        </div>
+                        <a href="{% url 'logout' %}" class="btn btn-link text-dark ms-auto p-0 border-0"
+                            title="Sair do sistema">
+                            <i class="bi bi-box-arrow-right fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 2. SIDEBAR DESKTOP -->
+        <aside class="sidebar bg-white border-end p-3 d-none d-lg-flex flex-column">
+
+            <div class="d-flex align-items-center mb-4 text-primary">
+                <i class="bi bi-heart-pulse fs-3 me-2"></i>
+                <h4 class="mb-0 text-dark">MedAgenda</h4>
+            </div>
+
+            <ul class="nav nav-pills flex-column gap-1">
+                <li class="nav-item">
+                    <a href="{% url 'usuario' %}" class="nav-link active d-flex align-items-center gap-2">
+                        <i class="bi bi-grid"></i>
+                        <span>Início</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="mt-auto d-flex align-items-center pt-3 border-top">
+                <div>
+                    <div class="fw-bold small">{{ request.user.get_full_name|default:request.user.username }}</div>
+                </div>
+                <a href="{% url 'logout' %}" class="btn btn-link text-dark ms-auto p-0 border-0"
+                    title="Sair do sistema">
+                    <i class="bi bi-box-arrow-right fs-5"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN (Conteúdo da Direita) -->
+        <main class="flex-grow-1 p-3 bg-light overflow-auto">
+            <div class="container-fluid px-0">
+
+                <!-- MENSAGENS DE SUCESSO OU ERRO DO DJANGO -->
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-3" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <!-- CABEÇALHO -->
+                <header class="d-flex flex-column py-2 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
+                    <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Início</h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0 fw-bold">Olá, {{ request.user.first_name|default:request.user.username }}!</h4>
+                        <div>
+                            <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                                data-bs-target="#modalNovaConsulta">
+                                <i class="bi bi-plus-lg"></i> Nova Consulta
+                            </button>
+
+                            <!-- MODAL DE AGENDAR CONSULTA -->
+                            <div class="modal fade" id="modalNovaConsulta" tabindex="-1"
+                                aria-labelledby="modalNovaConsultaLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content border-5 rounded-4 shadow">
+
+                                        <div class="modal-header border-bottom px-4 pt-4 pb-3">
+                                            <div>
+                                                <h4 class="modal-title fw-bold text-dark" id="modalNovaConsultaLabel">
+                                                    Agendar Consulta</h4>
+                                                <p class="text-muted small mb-0">Preencha as informações para
+                                                    agendamento</p>
+                                            </div>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+
+                                        <form method="POST" action="{% url 'usuario' %}">
+                                            {% csrf_token %}
+                                            <div class="modal-body p-4">
+                                                <div class="row g-3">
+
+                                                    <div class="col-12">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">
+                                                            Seu Nome
+                                                        </label>
+                                                        <input type="text" class="form-control rounded-3"
+                                                            value="{{ request.user.get_full_name|default:request.user.username }}"
+                                                            readonly disabled>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">
+                                                            Médico Responsável
+                                                        </label>
+                                                        <select class="form-select rounded-3" name="medico" required>
+                                                            <option value="" selected disabled>Selecione um médico...
+                                                            </option>
+                                                            {% for medico in medicos %}
+                                                            <option value="{{ medico.id }}">
+                                                                Dr(a). {{ medico.nome }} - {{ medico.especialidade }}
+                                                            </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Data</label>
+                                                        <input type="date" class="form-control rounded-3" name="data"
+                                                            required>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">Horário</label>
+                                                        <input type="time" class="form-control rounded-3" name="horario"
+                                                            required>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <label
+                                                            class="form-label text-uppercase small text-muted fw-bold">
+                                                            Observações e Alergias
+                                                        </label>
+                                                        <textarea class="form-control rounded-3" name="observacao"
+                                                            rows="3"
+                                                            placeholder="Adicione observações importantes para o dia do atendimento..."></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer border-top px-4 py-3">
+                                                <button type="button" class="btn btn-light border rounded-3 px-3"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary rounded-3 px-4 text-white">
+                                                    <i class="bi bi-check-lg me-1"></i> Confirmar e Salvar
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- SEÇÃO DA TABELA DE CONSULTAS -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-1 rounded-4 shadow-sm bg-white p-4">
+
+                            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                                <div>
+                                    <h5 class="fw-bold mb-1">Minhas Consultas</h5>
+                                    <p class="text-muted small mb-0">Lista de consultas agendadas</p>
+                                </div>
+                            </div>
+
+                            <!-- Tabela Responsiva com os Dados do Banco -->
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                        <tr class="text-muted text-uppercase" style="font-size: 0.75rem;">
+                                            <th scope="col" class="py-3">Data</th>
+                                            <th scope="col" class="py-3">Horário</th>
+                                            <th scope="col" class="py-3">Médico</th>
+                                            <th scope="col" class="py-3">Especialidade</th>
+                                            <th scope="col" class="py-3">Observação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for agendamento in agendamentos %}
+                                        <tr>
+                                            <td class="fw-bold text-dark">{{ agendamento.data|date:"d/m/Y" }}</td>
+                                            <td class="fw-bold text-dark">{{ agendamento.horario|time:"H:i" }}</td>
+                                            <td>
+                                                <div class="fw-semibold text-dark">Dr(a). {{ agendamento.medico.nome }}
+                                                </div>
+                                            </td>
+                                            <td class="text-muted">{{ agendamento.medico.especialidade }}</td>
+                                            <td class="text-muted">{{ agendamento.observacao|default:"-" }}</td>
+                                        </tr>
+                                        {% empty %}
+                                        <tr>
+                                            <td colspan="5" class="text-center py-4 text-muted">
+                                                Nenhuma consulta agendada no momento.
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
