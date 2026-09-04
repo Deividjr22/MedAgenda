@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Medico, Agendamento
 
@@ -18,7 +19,29 @@ def logout_view(request):
 
 def cadastro_view(request):
     if request.method == "POST":
-        pass
+        email = request.POST.get("email")
+        telefone = request.POST.get("telefone")
+        cpf = request.POST.get("cpf")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        confirm_password = request.POST.get("confirm_password")
+
+        if password != confirm_password:
+            messages.error(request, "As senhas não coincidem.")
+            return redirect("cadastro")
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Este nome de usuário já está em uso.")
+            return redirect("cadastro")
+
+        user = User.objects.create_user(
+            username=username, email=email, password=password
+        )
+        user.save()
+
+        messages.success(request, "Cadastro realizado com sucesso! Faça login.")
+        return redirect("login")
+
     return render(request, "agenda/Cadastro.html")
 
 
