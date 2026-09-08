@@ -150,7 +150,7 @@
                                                 aria-label="Close"></button>
                                         </div>
 
-                                        <form method="POST" action="{% url 'usuario' %}">
+                                        <form method="POST" action="{% url 'cadastrar_agendamento' %}">
                                             {% csrf_token %}
                                             <div class="modal-body p-4">
                                                 <div class="row g-3">
@@ -175,7 +175,9 @@
                                                             </option>
                                                             {% for medico in medicos %}
                                                             <option value="{{ medico.id }}">
-                                                                Dr(a). {{ medico.nome }} - {{ medico.especialidade }}
+                                                                Dr(a). {{
+                                                                medico.user.get_full_name|default:medico.user.username
+                                                                }} - {{ medico.especialidade }}
                                                             </option>
                                                             {% endfor %}
                                                         </select>
@@ -244,6 +246,7 @@
                                             <th scope="col" class="py-3">Horário</th>
                                             <th scope="col" class="py-3">Médico</th>
                                             <th scope="col" class="py-3">Especialidade</th>
+                                            <th scope="col" class="py-3">Status</th>
                                             <th scope="col" class="py-3">Observação</th>
                                         </tr>
                                     </thead>
@@ -253,15 +256,22 @@
                                             <td class="fw-bold text-dark">{{ agendamento.data|date:"d/m/Y" }}</td>
                                             <td class="fw-bold text-dark">{{ agendamento.horario|time:"H:i" }}</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">Dr(a). {{ agendamento.medico.nome }}
+                                                <div class="fw-semibold text-dark">Dr(a). {{
+                                                    agendamento.medico.user.get_full_name|default:agendamento.medico.user.username
+                                                    }}
                                                 </div>
                                             </td>
                                             <td class="text-muted">{{ agendamento.medico.especialidade }}</td>
+                                            <td>
+                                                <span class="badge bg-light text-primary border">
+                                                    {{ agendamento.status }}
+                                                </span>
+                                            </td>
                                             <td class="text-muted">{{ agendamento.observacao|default:"-" }}</td>
                                         </tr>
                                         {% empty %}
                                         <tr>
-                                            <td colspan="5" class="text-center py-4 text-muted">
+                                            <td colspan="6" class="text-center py-4 text-muted">
                                                 Nenhuma consulta agendada no momento.
                                             </td>
                                         </tr>

@@ -58,6 +58,7 @@
                 </button>
                 <div class="collapse navbar-collapse mt-3" id="menuMobile">
                     <ul class="nav nav-pills flex-column gap-1 mb-3">
+
                         <li class="nav-item">
                             <a href="#" class="nav-link active d-flex align-items-center gap-2">
                                 <i class="bi bi-person text-dark"></i>
@@ -245,7 +246,7 @@
                                 <div class="col-md-5">
                                     <label class="form-label text-uppercase small fw-bold text-secondary">Buscar por
                                         nome ou CPF</label>
-                                    <input type="text" class="form-control rounded-3"
+                                    <input type="text" id="inputBusca" class="form-control rounded-3"
                                         placeholder="Digite para iniciar a busca...">
                                 </div>
 
@@ -253,10 +254,10 @@
                                 <div class="col-md-3">
                                     <label class="form-label text-uppercase small fw-bold text-secondary">Filtrar por
                                         Status</label>
-                                    <select class="form-select rounded-3">
-                                        <option selected>Todos os Status</option>
-                                        <option>Ativo</option>
-                                        <option>Inativo</option>
+                                    <select id="selectStatus" class="form-select rounded-3">
+                                        <option value="Todos" selected>Todos os Status</option>
+                                        <option value="Ativo">Ativo</option>
+                                        <option value="Inativo">Inativo</option>
                                     </select>
                                 </div>
 
@@ -264,11 +265,11 @@
                                 <div class="col-md-2">
                                     <label
                                         class="form-label text-uppercase small fw-bold text-secondary">Convênio</label>
-                                    <select class="form-select rounded-3">
-                                        <option selected>Todos</option>
-                                        <option>Unimed Integral Nacional</option>
-                                        <option>Bradesco Saúde</option>
-                                        <option>Particular</option>
+                                    <select id="selectConvenio" class="form-select rounded-3">
+                                        <option value="Todos" selected>Todos</option>
+                                        <option value="Unimed">Unimed</option>
+                                        <option value="Bradesco Saúde">Bradesco Saúde</option>
+                                        <option value="Particular">Particular</option>
                                     </select>
                                 </div>
 
@@ -290,11 +291,12 @@
                     <div class="col-12">
                         <div class="card border-1 rounded-4 shadow-sm bg-white p-4">
                             <div class="table-responsive">
-                                <table class="table align-middle mb-0">
+                                <table class="table align-middle mb-0" id="tabelaPacientes">
                                     <thead>
                                         <tr class="text-muted text-uppercase" style="font-size: 0.75rem;">
                                             <th scope="col" class="py-3">nome completo</th>
                                             <th scope="col" class="py-3">cpf</th>
+                                            <th scope="col" class="py-3">médico responsável</th>
                                             <th scope="col" class="py-3">telefone</th>
                                             <th scope="col" class="py-3 text-end">última consulta</th>
                                             <th scope="col" class="py-3 text-end">próxima consulta</th>
@@ -305,10 +307,11 @@
                                     <tbody>
                                         <!-- Linha 1 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">Mariana Costa Neves</td>
+                                            <td class="fw-bold text-dark col-nome">Mariana Costa Neves</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">123.456.789-09</div>
+                                                <div class="fw-semibold text-dark col-cpf">123.456.789-09</div>
                                             </td>
+                                            <td class="text-muted col-medico">Dr. Lucas Silva</td>
                                             <td class="text-muted">(21) 98765-4321</td>
                                             <td class="text-end">
                                                 <div class="text-muted">10/04/2026</div>
@@ -317,19 +320,20 @@
                                                 <div class="text-muted">15/05/2026</div>
                                             </td>
                                             <td class="text-end">
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
+                                                <span class="px-3 py-1 rounded-2 fw-semibold col-status"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Ativo</span>
                                             </td>
                                             <td class="text-end">
-                                                <div class="text-muted">Unimed</div>
+                                                <div class="text-muted col-convenio">Unimed</div>
                                             </td>
                                         </tr>
                                         <!-- Linha 2 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">Carlos Eduardo Santos</td>
+                                            <td class="fw-bold text-dark col-nome">Carlos Eduardo Santos</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">987.654.321-12</div>
+                                                <div class="fw-semibold text-dark col-cpf">987.654.321-12</div>
                                             </td>
+                                            <td class="text-muted col-medico">Dra. Ana Souza</td>
                                             <td class="text-muted">(21) 91234-5678</td>
                                             <td class="text-end">
                                                 <div class="text-muted">18/04/2026</div>
@@ -338,19 +342,20 @@
                                                 <div class="text-muted">16/05/2026</div>
                                             </td>
                                             <td class="text-end">
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
+                                                <span class="px-3 py-1 rounded-2 fw-semibold col-status"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Ativo</span>
                                             </td>
                                             <td class="text-end">
-                                                <div class="text-muted">Bradesco Saúde</div>
+                                                <div class="text-muted col-convenio">Bradesco Saúde</div>
                                             </td>
                                         </tr>
                                         <!-- Linha 3 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">Juliana Mendes Silva</td>
+                                            <td class="fw-bold text-dark col-nome">Juliana Mendes Silva</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">111.222.333-44</div>
+                                                <div class="fw-semibold text-dark col-cpf">111.222.333-44</div>
                                             </td>
+                                            <td class="text-muted col-medico">Dr. Roberto Mendes</td>
                                             <td class="text-muted">(21) 99888-7766</td>
                                             <td class="text-end">
                                                 <div class="text-muted">Sem historico</div>
@@ -359,19 +364,20 @@
                                                 <div class="text-muted">17/05/2026</div>
                                             </td>
                                             <td class="text-end">
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
+                                                <span class="px-3 py-1 rounded-2 fw-semibold col-status"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Ativo</span>
                                             </td>
                                             <td class="text-end">
-                                                <div class="text-muted">Particular</div>
+                                                <div class="text-muted col-convenio">Particular</div>
                                             </td>
                                         </tr>
                                         <!-- Linha 4 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">Felipe Rodrigues Almeida</td>
+                                            <td class="fw-bold text-dark col-nome">Felipe Rodrigues Almeida</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">555.666.777-88</div>
+                                                <div class="fw-semibold text-dark col-cpf">555.666.777-88</div>
                                             </td>
+                                            <td class="text-muted col-medico">Dr. Lucas Silva</td>
                                             <td class="text-muted">(21) 97777-4433</td>
                                             <td class="text-end">
                                                 <div class="text-muted">02/05/2026</div>
@@ -380,19 +386,20 @@
                                                 <div class="text-muted">18/05/2026</div>
                                             </td>
                                             <td class="text-end">
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
+                                                <span class="px-3 py-1 rounded-2 fw-semibold col-status"
                                                     style="background-color: rgba(25, 135, 84, 0.1); color: #198754; font-size: 0.85rem;">Ativo</span>
                                             </td>
                                             <td class="text-end">
-                                                <div class="text-muted">Unimed Integral Nacional</div>
+                                                <div class="text-muted col-convenio">Unimed Integral Nacional</div>
                                             </td>
                                         </tr>
                                         <!-- Linha 5 -->
                                         <tr>
-                                            <td class="fw-bold text-dark">Beatriz Oliveira</td>
+                                            <td class="fw-bold text-dark col-nome">Beatriz Oliveira</td>
                                             <td>
-                                                <div class="fw-semibold text-dark">333.444.555-66</div>
+                                                <div class="fw-semibold text-dark col-cpf">333.444.555-66</div>
                                             </td>
+                                            <td class="text-muted col-medico">Dra. Ana Souza</td>
                                             <td class="text-muted">(21) 95555-2211</td>
                                             <td class="text-end">
                                                 <div class="text-muted">12/03/2026</div>
@@ -401,11 +408,11 @@
                                                 <div class="text-muted">Sem agendamento</div>
                                             </td>
                                             <td class="text-end">
-                                                <span class="px-3 py-1 rounded-2 fw-semibold"
+                                                <span class="px-3 py-1 rounded-2 fw-semibold col-status"
                                                     style="background-color: rgba(220, 53, 69, 0.1); color: #dc3545; font-size: 0.85rem;">Inativo</span>
                                             </td>
                                             <td class="text-end">
-                                                <div class="text-muted">Bradesco Saúde</div>
+                                                <div class="text-muted col-convenio">Bradesco Saúde</div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -419,6 +426,55 @@
         </main>
     </div>
 
+    <!-- SCRIPT DE FILTRAGEM -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputBusca = document.getElementById('inputBusca');
+            const selectStatus = document.getElementById('selectStatus');
+            const selectConvenio = document.getElementById('selectConvenio');
+            const btnFiltrar = document.getElementById('btnFiltrar');
+            const linhasTabela = document.querySelectorAll('#tabelaPacientes tbody tr');
+
+            function aplicarFiltros() {
+                const termoBusca = inputBusca.value.toLowerCase().trim();
+                const statusSelecionado = selectStatus.value;
+                const convenioSelecionado = selectConvenio.value.toLowerCase();
+
+                linhasTabela.forEach(linha => {
+                    const nome = linha.querySelector('.col-nome').textContent.toLowerCase();
+                    const cpf = linha.querySelector('.col-cpf').textContent.toLowerCase();
+                    const status = linha.querySelector('.col-status').textContent.trim();
+                    const convenio = linha.querySelector('.col-convenio').textContent.toLowerCase();
+
+                    // Validação do campo Nome ou CPF
+                    const atendeBusca = termoBusca === '' || nome.includes(termoBusca) || cpf.includes(termoBusca);
+
+                    // Validação do Status
+                    const atendeStatus = statusSelecionado === 'Todos' || status === statusSelecionado;
+
+                    // Validação do Convênio
+                    const atendeConvenio = convenioSelecionado === 'todos' || convenio.includes(convenioSelecionado);
+
+                    // Exibe a linha somente se atender a todos os critérios
+                    if (atendeBusca && atendeStatus && atendeConvenio) {
+                        linha.style.display = '';
+                    } else {
+                        linha.style.display = 'none';
+                    }
+                });
+            }
+
+            // Executa ao clicar no botão
+            btnFiltrar.addEventListener('click', aplicarFiltros);
+
+            // Filtro dinâmico ao digitar no campo de busca
+            inputBusca.addEventListener('input', aplicarFiltros);
+
+            // Filtro automático ao alterar as opções dos selects
+            selectStatus.addEventListener('change', aplicarFiltros);
+            selectConvenio.addEventListener('change', aplicarFiltros);
+        });
+    </script>
 </body>
 
 </html>
