@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -68,8 +70,7 @@
 
                     <div class="d-flex align-items-center pt-3 border-top">
                         <div>
-                            <div class="fw-bold small">{{ request.user.get_full_name|default:request.user.username }}
-                            </div>
+                            <div class="fw-bold small">{{ request.user.get_full_name }}</div>
                         </div>
                         <a href="{% url 'logout' %}" class="btn btn-link text-dark ms-auto p-0 border-0"
                             title="Sair do sistema">
@@ -99,7 +100,7 @@
 
             <div class="mt-auto d-flex align-items-center pt-3 border-top">
                 <div>
-                    <div class="fw-bold small">{{ request.user.get_full_name|default:request.user.username }}</div>
+                    <div class="fw-bold small">{{ request.user.get_full_name }}</div>
                 </div>
                 <a href="{% url 'logout' %}" class="btn btn-link text-dark ms-auto p-0 border-0"
                     title="Sair do sistema">
@@ -126,7 +127,7 @@
                 <header class="d-flex flex-column py-2 mb-4 bg-white px-4 border border-1 rounded-4 shadow-sm">
                     <h6 class="text-muted mb-2" style="margin-top: 0;">MedAgenda / Início</h6>
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0 fw-bold">Olá, {{ request.user.first_name|default:request.user.username }}!</h4>
+                        <h4 class="mb-0 fw-bold">Olá, {{ request.user.first_name }}!</h4>
                         <div>
                             <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
                                 data-bs-target="#modalNovaConsulta">
@@ -150,35 +151,30 @@
                                                 aria-label="Close"></button>
                                         </div>
 
-                                        <form method="POST" action="{% url 'cadastrar_agendamento' %}">
+                                        <form method="POST" action="{% url 'usuario' %}">
                                             {% csrf_token %}
                                             <div class="modal-body p-4">
                                                 <div class="row g-3">
 
                                                     <div class="col-12">
                                                         <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">
-                                                            Seu Nome
-                                                        </label>
+                                                            class="form-label text-uppercase small text-muted fw-bold">Seu
+                                                            Nome</label>
                                                         <input type="text" class="form-control rounded-3"
-                                                            value="{{ request.user.get_full_name|default:request.user.username }}"
-                                                            readonly disabled>
+                                                            value="{{ request.user.get_full_name }}" readonly>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">
-                                                            Médico Responsável
-                                                        </label>
+                                                            class="form-label text-uppercase small text-muted fw-bold">Médico
+                                                            Responsável</label>
                                                         <select class="form-select rounded-3" name="medico" required>
                                                             <option value="" selected disabled>Selecione um médico...
                                                             </option>
                                                             {% for medico in medicos %}
-                                                            <option value="{{ medico.id }}">
-                                                                Dr(a). {{
-                                                                medico.user.get_full_name|default:medico.user.username
-                                                                }} - {{ medico.especialidade }}
-                                                            </option>
+                                                            <option value="{{ medico.id }}">Dr(a). {{
+                                                                medico.user.get_full_name }} - {{ medico.especialidade
+                                                                }}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </div>
@@ -199,13 +195,13 @@
 
                                                     <div class="col-12">
                                                         <label
-                                                            class="form-label text-uppercase small text-muted fw-bold">
-                                                            Observações e Alergias
-                                                        </label>
+                                                            class="form-label text-uppercase small text-muted fw-bold">Observações
+                                                            e Alergias</label>
                                                         <textarea class="form-control rounded-3" name="observacao"
                                                             rows="3"
                                                             placeholder="Adicione observações importantes para o dia do atendimento..."></textarea>
                                                     </div>
+
                                                 </div>
                                             </div>
 
@@ -257,9 +253,7 @@
                                             <td class="fw-bold text-dark">{{ agendamento.horario|time:"H:i" }}</td>
                                             <td>
                                                 <div class="fw-semibold text-dark">Dr(a). {{
-                                                    agendamento.medico.user.get_full_name|default:agendamento.medico.user.username
-                                                    }}
-                                                </div>
+                                                    agendamento.medico.user.get_full_name }}</div>
                                             </td>
                                             <td class="text-muted">{{ agendamento.medico.especialidade }}</td>
                                             <td>
@@ -268,6 +262,19 @@
                                                 </span>
                                             </td>
                                             <td class="text-muted">{{ agendamento.observacao|default:"-" }}</td>
+                                            <td>
+                                                {% if agendamento.status == 'Agendado' %}
+                                                <span class="badge bg-primary text-white">Agendado</span>
+                                                {% elif agendamento.status == 'Concluído' %}
+                                                <span class="badge bg-success text-white">Concluído</span>
+                                                {% elif agendamento.status == 'Cancelado' %}
+                                                <span class="badge bg-danger text-white">Cancelado</span>
+                                                {% else %}
+                                                <span class="badge bg-secondary text-white">{{ agendamento.status
+                                                    }}</span>
+                                                {% endif %}
+                                            </td>
+
                                         </tr>
                                         {% empty %}
                                         <tr>
